@@ -155,6 +155,26 @@ let pk = new Point(550, 300);
 let pl = new Point(650, 300);
 let t4 = new Triangle(pj, pk, pl);
 
+let pm = new Point(700, 100);
+let pn = new Point(700, 300);
+let po = new Point(800, 300);
+let t5 = new Triangle(pm, pn, po);
+
+let pp = new Point(850, 100);
+let pq = new Point(850, 300);
+let pr = new Point(950, 300);
+let t6 = new Triangle(pp, pq, pr);
+
+let ps = new Point(1000, 100);
+let pt = new Point(1000, 300);
+let pu = new Point(1100, 300);
+let t7 = new Triangle(ps, pt, pu);
+
+let pv = new Point(1150, 100);
+let pw = new Point(1150, 300);
+let px = new Point(1250, 300);
+let t8 = new Triangle(pv, pw, px);
+
 function draw_square(x, y, l) {
     c.beginPath();
     c.rect(x, y, l, l);
@@ -169,7 +189,7 @@ function animate() {
     c.clearRect(0, 0, innerWidth, innerHeight);
     
     draw_square(200, 400, 300);
-    draw_square(600, 400, 300);
+    draw_square(800, 400, 300);
 
     for (let t of Triangle.list)
         t.draw();
