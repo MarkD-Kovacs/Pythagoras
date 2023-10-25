@@ -1,4 +1,4 @@
-import { dist, init_canvas } from './utilities.js';
+import { dist, init_canvas, angle } from './utilities.js';
 
 // get canvas and context
 const canvas = document.querySelector("#canvas");
@@ -46,6 +46,23 @@ class Triangle {
         Triangle.list.push(this);
     }
 
+    static write(p1, p2, p3, letter) {
+        let middle = {
+            x: (p1.x + p2.x) / 2,
+            y: (p1.y + p2.y) / 2};
+
+        let alpha = angle(middle, p3);
+
+        let x = middle.x + 10 * Math.cos(alpha);
+        let y = middle.y - 10 * Math.sin(alpha);
+        
+        c.textBaseline = "middle";
+        c.textAlign = "center";
+        c.fillStyle = "black";
+        c.font = "24px serif";
+        c.fillText(letter, x, y);
+    }
+
     draw() {
         c.beginPath();
         c.moveTo(this.p1.x, this.p1.y);
@@ -57,6 +74,9 @@ class Triangle {
         c.fillStyle = "#84bfa6";
         c.fill();
         c.closePath();
+        Triangle.write(this.p1, this.p2, this.p3, "b");
+        Triangle.write(this.p1, this.p3, this.p2, "c");
+        Triangle.write(this.p3, this.p2, this.p1, "a");
     }
 
     move(dx, dy) {
