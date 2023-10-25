@@ -59,8 +59,15 @@ class Triangle {
         c.textBaseline = "middle";
         c.textAlign = "center";
         c.fillStyle = "black";
-        c.font = "24px serif";
+        c.font = "21px serif";
         c.fillText(letter, x, y);
+    }
+
+    copy_to_right(dx) {
+        let p1 = new Point(this.p1.x + dx, this.p1.y);
+        let p2 = new Point(this.p2.x + dx, this.p2.y);
+        let p3 = new Point(this.p3.x + dx, this.p3.y);
+        new Triangle(p1, p2, p3);
     }
 
     draw() {
@@ -155,45 +162,18 @@ canvas.addEventListener('mouseup', function() {
     Triangle.selected = undefined;
 });
 
-let pa = new Point(100, 100);
-let pb = new Point(100, 300);
+let pa = new Point(80, 80);
+let pb = new Point(80, 300);
 let pc = new Point(200, 300);
 let t1 = new Triangle(pa, pb, pc);
 
-let pd = new Point(250, 100);
-let pe = new Point(250, 300);
-let pf = new Point(350, 300);
-let t2 = new Triangle(pd, pe, pf);
-
-let pg = new Point(400, 100);
-let ph = new Point(400, 300);
-let pi = new Point(500, 300);
-let t3 = new Triangle(pg, ph, pi);
-
-let pj = new Point(550, 100);
-let pk = new Point(550, 300);
-let pl = new Point(650, 300);
-let t4 = new Triangle(pj, pk, pl);
-
-let pm = new Point(700, 100);
-let pn = new Point(700, 300);
-let po = new Point(800, 300);
-let t5 = new Triangle(pm, pn, po);
-
-let pp = new Point(850, 100);
-let pq = new Point(850, 300);
-let pr = new Point(950, 300);
-let t6 = new Triangle(pp, pq, pr);
-
-let ps = new Point(1000, 100);
-let pt = new Point(1000, 300);
-let pu = new Point(1100, 300);
-let t7 = new Triangle(ps, pt, pu);
-
-let pv = new Point(1150, 100);
-let pw = new Point(1150, 300);
-let px = new Point(1250, 300);
-let t8 = new Triangle(pv, pw, px);
+t1.copy_to_right(150);
+t1.copy_to_right(300);
+t1.copy_to_right(450);
+t1.copy_to_right(650);
+t1.copy_to_right(800);
+t1.copy_to_right(950);
+t1.copy_to_right(1100);
 
 function draw_square(x, y, l) {
     c.beginPath();
@@ -208,8 +188,8 @@ function draw_square(x, y, l) {
 function animate() {
     c.clearRect(0, 0, innerWidth, innerHeight);
     
-    draw_square(200, 400, 300);
-    draw_square(800, 400, 300);
+    draw_square(200, 400, 340);
+    draw_square(800, 400, 340);
 
     for (let t of Triangle.list)
         t.draw();
